@@ -3,6 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
+import 'package:uas/base_url.dart';
 import 'package:uas/model/klub.dart';
 
 class addDataFootballClub extends StatefulWidget {
@@ -236,7 +237,7 @@ class _addDataFootballClubState extends State<addDataFootballClub> {
     print("Kondisi klub : ${cityController.text}");
 
     final response = await http.post(
-      Uri.parse('http://192.168.0.110/uas/lib/php/create_klub.php'),
+      Uri.parse('${baseUrl}create_klub.php'),
       body: {
         'nama_klub': nameController.text,
         'tgl_berdiri': DateFormat('yyyy-MM-dd').format(selectDate).toString(),
@@ -289,7 +290,7 @@ class _addDataFootballClubState extends State<addDataFootballClub> {
     print("Kondisi klub : ${cityController.text}");
 
     final response = await http.post(
-      Uri.parse('http://192.168.0.110/uas/lib/php/update_klub.php'),
+      Uri.parse('${baseUrl}update_klub.php'),
       body: {
         'id': widget.dataClub?.id.toString(),
         'nama_klub': nameController.text,

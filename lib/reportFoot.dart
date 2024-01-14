@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:uas/base_url.dart';
 import 'package:uas/model/klub.dart';
 
 class reportFoot extends StatefulWidget {
@@ -74,7 +75,7 @@ class _reportFootState extends State<reportFoot> {
   //Function Untuk get data dari Mysql
   Future<void> fetchData() async {
     final response = await http
-        .get(Uri.parse('http://192.168.0.110/uas/lib/php/read_klub.php'));
+        .get(Uri.parse('${baseUrl}read_klub.php'));
 
     if (response.statusCode == 200) {
       setState(() {

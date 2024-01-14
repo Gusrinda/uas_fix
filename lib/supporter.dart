@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:mysql1/mysql1.dart';
 import 'package:uas/addDataSupporter.dart';
+import 'package:uas/base_url.dart';
 import 'package:uas/model/supporter.dart';
 import 'package:uas/mysql.dart';
 
@@ -174,7 +175,7 @@ class _supporterState extends State<supporter> {
   //Function Untuk get data dari Mysql
   Future<void> fetchData() async {
     final response = await http
-        .get(Uri.parse('http://192.168.0.110/uas/lib/php/read_supporter.php'));
+        .get(Uri.parse('${baseUrl}read_supporter.php'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -196,7 +197,7 @@ class _supporterState extends State<supporter> {
   //Function untuk delete data
   void deleteSupporter(String idToDelete) async {
     final response = await http.post(
-      Uri.parse('http://192.168.0.110/uas/lib/php/delete_support.php'),
+      Uri.parse('${baseUrl}delete_support.php'),
       body: {
         'idToDelete': idToDelete,
       },
@@ -214,7 +215,7 @@ class _supporterState extends State<supporter> {
   //Function untuk search by nama supporter
   void searchSupporter(String nama) async {
     final response = await http.post(
-      Uri.parse('http://192.168.0.110/uas/lib/php/search_support.php'),
+      Uri.parse('${baseUrl}search_support.php'),
       body: {'nama': nama},
     );
 

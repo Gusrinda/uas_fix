@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:uas/addDataFootballClub.dart';
 import 'package:http/http.dart' as http;
+import 'package:uas/base_url.dart';
 import 'package:uas/model/klub.dart';
 
 class footballClub extends StatefulWidget {
@@ -172,7 +173,7 @@ class _footballClubState extends State<footballClub> {
   //Function Untuk get data dari Mysql
   Future<void> fetchData() async {
     final response = await http
-        .get(Uri.parse('http://192.168.0.110/uas/lib/php/read_klub.php'));
+        .get(Uri.parse('${baseUrl}read_klub.php'));
 
     if (response.statusCode == 200) {
       setState(() {
@@ -194,7 +195,7 @@ class _footballClubState extends State<footballClub> {
   //Function untuk delete data
   void deleteKlub(String idToDelete) async {
     final response = await http.post(
-      Uri.parse('http://192.168.0.110/uas/lib/php/delete_klub.php'),
+      Uri.parse('${baseUrl}delete_klub.php'),
       body: {
         'idToDelete': idToDelete,
       },
@@ -212,7 +213,7 @@ class _footballClubState extends State<footballClub> {
   //Function untuk search by nama supporter
   void searchClub(String nama) async {
     final response = await http.post(
-      Uri.parse('http://192.168.0.110/uas/lib/php/search_klub.php'),
+      Uri.parse('${baseUrl}search_klub.php'),
       body: {'nama': nama},
     );
 
@@ -291,7 +292,7 @@ class _footballClubState extends State<footballClub> {
   //   // Membuat request HTTP
   //   var request = http.MultipartRequest(
   //     'POST',
-  //     Uri.parse('http://192.168.0.110/uas/lib/php/update_supporter.php'),
+  //     Uri.parse('${baseUrl}update_supporter.php'),
   //   );
 
   //   // Menambahkan data ke dalam request

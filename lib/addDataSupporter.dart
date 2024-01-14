@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:mysql1/mysql1.dart';
+import 'package:uas/base_url.dart';
 import 'package:uas/model/supporter.dart';
 import 'package:uas/mysql.dart';
 
@@ -33,7 +34,7 @@ class _addDataSupporterState extends State<addDataSupporter> {
   Future<void> _showMessageBox() async {
     var request = http.MultipartRequest(
       'POST',
-      Uri.parse('http://192.168.0.110/uas/lib/php/create_supp.php'),
+      Uri.parse('${baseUrl}create_supp.php'),
     );
 
     request.fields['nama'] = nameController.text;
@@ -80,7 +81,7 @@ class _addDataSupporterState extends State<addDataSupporter> {
     // Membuat request HTTP
     var request = http.MultipartRequest(
       'POST',
-      Uri.parse('http://192.168.0.110/uas/lib/php/update_supporter.php'),
+      Uri.parse('${baseUrl}update_supporter.php'),
     );
 
     // Menambahkan data ke dalam request

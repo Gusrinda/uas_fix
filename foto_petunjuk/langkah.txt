@@ -1,0 +1,15 @@
+1. Buka folder htdocs Xampp anda
+2. Buka cmd, lakukan Git clone repo ini ( https://github.com/Gusrinda/uas_fix.git ) 
+3. Buka projek. Run di terminal ( Flutter clean, lalu Flutter Get. Pastikan tidak ada error FLutter SDK terlebih dahulu )
+4. Jalankan xampp, start Apache dan mysql
+5. Buka localhost/phpmyadmin lalu buat db dengan nama uas dulu
+6. Setelah db dibuat, import file uas.sql dari projek
+7. Cocokkan semua file .php dengan db anda, pastikan menggunakan username, password, dan db sesuai yang anda set
+8. Setelah itu, buka cmd. Run ipconfig -> cari IPv4 anda
+9. Test api dengan copy ipv4 anda, ditambahkan path menuju salah satu .php 
+( contoh http://192.168.0.110/uas_fix/lib/php/read_supporter.php
+-> dimana 192.168.0.110 adalah ipv4 komputer
+-> .../uas_fix/lib/php/read_supporter.php adalah path menuju api
+)
+10. Setelah berhasil check api, ganti objek baseUrl di file base_url.dart dengan ipv4 anda + path menuju folder php ( api )
+11. Run projek, pastikan device android memiliki koneksi jaringan yang sama dengan komputer anda
