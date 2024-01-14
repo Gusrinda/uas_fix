@@ -28,32 +28,31 @@ class _addDataFootballClubState extends State<addDataFootballClub> {
 
   @override
   void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (widget.dataClub != null) {
-        setState(() {
-          nameController.text = widget.dataClub?.namaKlub ?? '';
-          cityController.text = widget.dataClub?.kotaKlub ?? '';
-          priceController.text = widget.dataClub?.hargaKlub ?? '';
+    if (widget.dataClub != null) {
+      nameController.text = widget.dataClub?.namaKlub ?? '';
+      cityController.text = widget.dataClub?.kotaKlub ?? '';
+      priceController.text = widget.dataClub?.hargaKlub ?? '';
 
-          print("KONDISI KLUB ${widget.dataClub?.kondisiKlub}");
+      print("KONDISI KLUB ${widget.dataClub?.kondisiKlub}");
 
-          if (widget.dataClub?.kondisiKlub == 0) {
-            groupValue = 'Baik';
-          } else if (widget.dataClub?.kondisiKlub == 1) {
-            groupValue = 'Tidak Baik';
-          } else {
-            groupValue = 'Bangkrut';
-          }
-
-          if (widget.dataClub!.peringkat.toString().length > 1) {
-            selectedItem1 = widget.dataClub?.peringkat ?? '';
-          } else {
-            selectedItem1 = '1-3';
-          }
-        });
+      if (widget.dataClub?.kondisiKlub == '0') {
+        groupValue = 'Baik';
+      } else if (widget.dataClub?.kondisiKlub == '1') {
+        groupValue = 'Tidak Baik';
+      } else if (widget.dataClub?.kondisiKlub == '2') {
+        groupValue = 'Bangkrut';
       }
-    });
+
+      print("GROUP VALUE ${groupValue}");
+
+      if (widget.dataClub!.peringkat.toString().length > 2) {
+        selectedItem1 = widget.dataClub?.peringkat ?? '';
+      } else {
+        selectedItem1 = '1-3';
+      }
+    }
+
+    super.initState();
   }
 
   @override
